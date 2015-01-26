@@ -6,11 +6,11 @@ Sub AllFiles()
    Dim i As Integer
    Dim iend As Integer
    
-   iend = 3
+   iend = 3                                                                  'Number of files
    
    For i = 1 To iend
    
-    Call OpenFile(Num)
+    Call OpenFile(Num)                                                       'Iterations for each file
 
     Num = Num + 1
     ActiveCell.Offset(0, Number) = ActiveCell
@@ -20,23 +20,23 @@ Sub AllFiles()
 End Sub
 
 
-Sub OpenFile(Number As Integer)
+Sub OpenFile(Number As Integer)                                               'Sub for opening a file
 
     Dim FilePath As String
     
-    FilePath = "C:\Users\MMiche01\Desktop\"
+    FilePath = "C:\Users\MMiche01\Desktop\"                                   'File path here (except filename)
     
-    Open FilePath & Number & ".501" For Input As #Number
+    Open FilePath & Number & ".501" For Input As #Number                      'I have named the files 1.501, 2.501, 3.501
     
     row_number = 0
     
-    Do Until EOF(Number)
+    Do Until EOF(Number) 
     
-        Line Input #Number, LineFromFile
+        Line Input #Number, LineFromFile                                     'Reads each line
         
-        LineItems = Right(LineFromFile, 10)
+        LineItems = Right(LineFromFile, 10)                                  'I want the right 10 characters 
         
-        ActiveCell.Offset(row_number, Number - 1).Value = LineItems
+        ActiveCell.Offset(row_number, Number - 1).Value = LineItems          'Read next line
         
 
         
