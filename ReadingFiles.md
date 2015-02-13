@@ -18,7 +18,7 @@ Sub AllFiles()
 
    
 End Sub
-
+'---------------------------------------------------------------------------------------------------------------------------
 
 Sub OpenFile(Number As Integer)                                               'Sub for opening a file
 
@@ -50,5 +50,37 @@ Sub OpenFile(Number As Integer)                                               'S
     
 End Sub
 
+'-----------------------------------------------------------------------------------------------------------------------
 
+Sub Change()
+    Dim lngRow As Long                               'Row Count
+    lngRow = Cells(Rows.Count, "A").End(xlUp).Row
+    'MsgBox (lngRow)
+    Dim x As Integer
+    x = lngRow - 1
+    
+
+    Dim MyArray() As String                  'Setting var length
+    ReDim MyArray(x) As String
+    
+    Dim StartN As Integer
+    Dim EndN As Integer
+    EndN = UBound(MyArray)
+    
+    For StartN = 1 To EndN
+        MyArray(StartN) = ActiveCell(StartN, 1).Value
+        
+    Next StartN
+    
+    
+    Dim OutPut As String
+    OutPut = ""
+       
+    For StartN = 1 To EndN
+        OutPut = OutPut & " or frame_id = " & MyArray(StartN)
+    Next StartN
+    
+    Cells(2, 3) = OutPut
+
+End Sub
 
